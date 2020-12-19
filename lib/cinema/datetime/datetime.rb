@@ -25,7 +25,7 @@ module Cinema
         elsif is_holiday?(now) && is_nighttime?(now)
           Cinema::CinemaTime::TimeZone::HOLIDAY_NIGHTTIME
         else
-          puts "定義されていない時間が入力されました。#{now}"
+          puts "定義されていない時間が入力されました。 => #{now}"
         end
       end
 

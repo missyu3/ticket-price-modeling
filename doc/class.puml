@@ -92,15 +92,17 @@ class cinema{
   }
 
 
-  package CinemaTime{
-    class CinemaDateTime {
-      + get_cinema_time_zone(): CinemaTimeZone
+  package DateTime{
+    class CinemaTime {
+      + time_division: TimeZone
     }
 
-    enum CinemaTimeZone {
-      daytime
-      nighttime
-      firstday
+    enum TimeZone {
+      WEEKDAY_DAYTIME
+      WEEKDAY_NIGHTTIME
+      HOLIDAY_DAYTIME
+      HOLIDAY_NIGHTTIME
+      CINEMA_DAY
     }
   }
 }

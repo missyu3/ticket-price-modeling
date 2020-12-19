@@ -1,0 +1,109 @@
+@startuml
+
+class Main{
+}
+
+package model {
+  
+package Cinema{
+  
+class cinema{
+  - ticket_counter: TicketCounter
+  - user: User
+}
+
+  package Ticket{
+    class TicketCounter {
+      - customers: Customers
+      - register: TicketRegister
+    }
+
+    class Ticket {
+      + title: String
+      + screening_time: Datetime
+      + price: Integer
+      + price_type: PriceGradeType
+    }
+  }
+
+  package PriceGrade {
+    class PriceGradeFactory{
+      create(Customer): PriceGradeClass
+    }
+    class CinemaCitizen {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+    class CinemaCitizenSenior {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+    class Ordinary {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+    class Senior {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+    class CollegeStudent {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+    class HighSchoolStudent {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+    class ElementarySchoolStudent {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+    class Handicapped {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+    class HandicappedHighSchool {
+      + price: Integer
+      + name: String
+      + initialize(timezone)
+    }
+  }
+
+  package Customer {
+  class Customer {
+    - user: User
+    + get_ticket_type
+  }
+
+  class User {
+    + have_id_cord: boolean 
+    + have_student_id_cord: boolean
+    + have_student_notebook: boolean
+    + have_disability_notebook: boolean
+  }
+  }
+
+
+  package CinemaTime{
+    class CinemaDateTime {
+      + get_cinema_time_zone(): CinemaTimeZone
+    }
+
+    enum CinemaTimeZone {
+      daytime
+      nighttime
+      firstday
+    }
+  }
+}
+}
+
+@enduml 

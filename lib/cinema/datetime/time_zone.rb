@@ -7,6 +7,7 @@ module Cinema
       HOLIDAY_DAYTIME = 3
       HOLIDAY_NIGHTTIME = 4
       CINEMA_DAY = 5
+      WEEKDAY_CINEMA_DAY = 6
     end
   end
 end

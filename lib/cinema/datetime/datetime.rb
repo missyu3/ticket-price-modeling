@@ -14,15 +14,23 @@ module Cinema
 
       private
       def get_time_division(now)
-        if is_cinema_day?(now)
+        cinemaday = is_cinema_day?(now)
+        weekday = is_weekday?(now)
+        holiday = is_holiday?(now)
+        daytime = is_daytime?(now)
+        nighttime = is_nighttime?(now)
+
+        if cinemaday && weekday
+          Cinema::CinemaTime::TimeZone::WEEKDAY_CINEMA_DAY
+        elsif cinemaday 
           Cinema::CinemaTime::TimeZone::CINEMA_DAY
-        elsif is_weekday?(now) && is_daytime?(now)
+        elsif weekday && daytime
           Cinema::CinemaTime::TimeZone::WEEKDAY_DAYTIME
-        elsif is_weekday?(now) && is_nighttime?(now)
+        elsif weekday && nighttime
           Cinema::CinemaTime::TimeZone::WEEKDAY_NIGHTTIME
-        elsif is_holiday?(now) && is_nighttime?(now)
+        elsif holiday && daytime
           Cinema::CinemaTime::TimeZone::HOLIDAY_DAYTIME
-        elsif is_holiday?(now) && is_nighttime?(now)
+        elsif holiday && nighttime
           Cinema::CinemaTime::TimeZone::HOLIDAY_NIGHTTIME
         else
           puts "定義されていない時間が入力されました。 => #{now}"

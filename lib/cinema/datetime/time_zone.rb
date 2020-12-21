@@ -1,6 +1,6 @@
 
 module Cinema
-  module CinemaTime
+  module DateTime
     module TimeZone
       WEEKDAY_DAYTIME = 1
       WEEKDAY_NIGHTTIME = 2

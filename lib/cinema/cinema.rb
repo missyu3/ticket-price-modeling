@@ -34,9 +34,29 @@ module Cinema
         cinema_time = Time.parse(log[0])
         movie_title = log[1]
         visit_customer = log[2]
-        ticket_counter.visit_customer(cinema_time,movie_title,visit_customer)
+        is_3d_movie = is_3d_movie(log)
+        have_3d_glasses = have_3d_glasses(log)
+        ticket_counter.visit_customer(cinema_time,movie_title,visit_customer,is_3d_movie,have_3d_glasses)
       end
       ticket_counter
+    end
+
+    def is_3d_movie(log)
+      return false if log.size < 4
+      if log[3] == "3D映画"
+        true
+      else
+        false
+      end
+    end
+
+    def have_3d_glasses(log)
+      return false if log.size < 4
+      if log[4] == "3Dメガネを持っている"
+        true
+      else
+        false
+      end
     end
 
     def output_sales(ticket_counter)

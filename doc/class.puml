@@ -1,21 +1,19 @@
 @startuml
+left to right direction
 
-class Main{
-}
-
-package model {
-  
 package Cinema{
   
-class cinema{
-  - ticket_counter: TicketCounter
-  - user: User
-}
+  class Cinema{
+    + calculate_sales_csv
+    + test_calculate_sales_csv
+  }
 
-  package Ticket{
+  package MovieTicket{
     class TicketCounter {
-      - customers: Customers
-      - register: TicketRegister
+      + visit_customer()
+      + calculate_sales()
+      + calculate_each_movie_sales()
+      + calculate_each_ticket_type_sales()
     }
 
     class Ticket {
@@ -23,57 +21,64 @@ class cinema{
       + screening_time: Datetime
       + price: Integer
       + price_type: PriceGradeType
+      + initialize()
+      + issue
     }
-  }
 
-  package TicketType {
-    class TicketTypeFactory{
-      create(Customer): PriceGradeClass
-    }
-    class CinemaCitizen {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
-    }
-    class CinemaCitizenSenior {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
-    }
-    class Ordinary {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
-    }
-    class Senior {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
-    }
-    class CollegeStudent {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
-    }
-    class HighSchoolStudent {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
-    }
-    class ElementarySchoolStudent {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
-    }
-    class Handicapped {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
-    }
-    class HandicappedHighSchool {
-      + price: Integer
-      + name: String
-      + initialize(timezone)
+    package TicketType {
+      class TicketTypeFactory{
+        + create()
+      }
+      
+      class TicketPriceDivide {
+        - get_ticket_price()
+      }
+
+      class CinemaCitizenSenior {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
+      class CinemaCitizen {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
+      class CollegeStudent {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
+      class ElementarySchoolStudent {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
+      class HandicappedHighSchool {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
+      class Handicapped {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
+      class HighSchoolStudent {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
+      class TicketPriceDivide {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
+      class Senior {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
     }
   }
 
@@ -88,9 +93,44 @@ class cinema{
       HOLIDAY_DAYTIME
       HOLIDAY_NIGHTTIME
       CINEMA_DAY
+      WEEKDAY_CINEMA_DAY
     }
   }
 }
-}
 
+Cinema --- TicketCounter
+TicketCounter -- CinemaTime
+TicketCounter - Ticket
+Ticket -left- TicketTypeFactory
+
+Ticket -- CinemaCitizenSenior 
+Ticket -- CinemaCitizen
+Ticket -- CollegeStudent
+Ticket -- ElementarySchoolStudent
+Ticket -- HandicappedHighSchool
+Ticket -- Handicapped
+Ticket -- HighSchoolStudent
+Ticket -- Senior
+
+TicketTypeFactory -- CinemaCitizenSenior 
+TicketTypeFactory -- CinemaCitizen
+TicketTypeFactory -- CollegeStudent
+TicketTypeFactory -- ElementarySchoolStudent
+TicketTypeFactory -- HandicappedHighSchool
+TicketTypeFactory -- Handicapped
+TicketTypeFactory -- HighSchoolStudent
+TicketTypeFactory -- Senior
+CinemaCitizenSenior -down- TicketPriceDivide
+CinemaCitizen -down- TicketPriceDivide
+CollegeStudent -down- TicketPriceDivide
+ElementarySchoolStudent -down- TicketPriceDivide
+HandicappedHighSchool -down- TicketPriceDivide
+Handicapped -down- TicketPriceDivide
+HighSchoolStudent -down- TicketPriceDivide
+Senior -down- TicketPriceDivide
+CinemaTime -down- TimeZone
+TicketPriceDivide --- TimeZone
+
+class TicketPriceDivide
+note right: Moduleです
 @enduml 

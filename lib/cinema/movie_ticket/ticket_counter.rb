@@ -5,7 +5,6 @@ require_relative "./ticket_type/ticket_type_factory"
 module Cinema
   module MovieTicket
     class TicketCounter
-      attr_reader :history
 
       def initialize()
         @history = []

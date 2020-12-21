@@ -27,4 +27,4 @@
 1. `cinema.calculate_sales_csv`
 
 - テスト用のメソッド
-  - `cinema.test_calculate_sales_csv`[
+  - `cinema.test_calculate_sales_csv`

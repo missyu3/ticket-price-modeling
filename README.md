@@ -5,6 +5,10 @@
 - お題
   - https://cinemacity.co.jp/ticket/
 
+## Class 図
+
+![class-uml](https://github.com/missyu3/ticket-price-modeling/blob/images/class.png)
+
 ## 実行手順
 
 ### Docker の中にはいる手順

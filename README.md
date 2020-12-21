@@ -17,10 +17,10 @@
 
 ### Docker 内部での手順
 
-1. `cd app`
+1. `irb`
 1. `require './lib/cinema/cinema.rb'`
 1. `cinema = Cinema::Cinema.new`
 1. `cinema.calculate_sales_csv`
-1. `cinema.test_calculate_sales_csv`[^テスト]
 
-[^テスト]: 出力データと同じデータを出力したい場合はこのメソッドを呼び出す。
+- テスト用のメソッド
+  - `cinema.test_calculate_sales_csv`[

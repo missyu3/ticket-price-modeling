@@ -79,6 +79,11 @@ package Cinema{
         + name: String
         + initialize()
       }
+      class HandicappedCinemaCitizen {
+        + price: Integer
+        + name: String
+        + initialize()
+      }
     }
   }
 
@@ -111,6 +116,7 @@ Ticket -- HandicappedHighSchool
 Ticket -- Handicapped
 Ticket -- HighSchoolStudent
 Ticket -- Senior
+Ticket -- HandicappedCinemaCitizen
 
 TicketTypeFactory -- CinemaCitizenSenior 
 TicketTypeFactory -- CinemaCitizen
@@ -120,6 +126,8 @@ TicketTypeFactory -- HandicappedHighSchool
 TicketTypeFactory -- Handicapped
 TicketTypeFactory -- HighSchoolStudent
 TicketTypeFactory -- Senior
+TicketTypeFactory -- HandicappedCinemaCitizen
+
 CinemaCitizenSenior -down- TicketPriceDivide
 CinemaCitizen -down- TicketPriceDivide
 CollegeStudent -down- TicketPriceDivide

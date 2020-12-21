@@ -10,11 +10,10 @@ module Cinema
         @history = []
       end
 
-      def visit_customer(screening_time,movie_title,visit_customer)
-        time = DateTime::CinemaTime.new(screening_time).time_division
-        ticket_type = TicketType::TicketTypeFactory.new().create(visit_customer,time)
+      def visit_customer(screening_time,movie_title,visit_customer,is_3d_movie,have_3d_glasses)
         ticket = Ticket.new(movie_title,screening_time)
-        ticket.issue(ticket_type)
+        time = DateTime::CinemaTime.new(screening_time).time_division
+        ticket.issue(visit_customer,time,is_3d_movie,have_3d_glasses)
         @history.push(ticket)
       end
 

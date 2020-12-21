@@ -7,16 +7,6 @@ include ActionView::Helpers::NumberHelper
 module Cinema
   class Cinema
 
-    def test
-      logs = read_csv_visiter_log
-      counter = register_ticket_counter(logs)
-      counter.history.each do |a|
-        puts "#{a.title} : #{a.screening_time} : #{a.price_type} : #{a.price}"
-        puts
-      end
-
-    end
-
     def calculate_sales_csv
       logs = read_csv_visiter_log
       counter = register_ticket_counter(logs)

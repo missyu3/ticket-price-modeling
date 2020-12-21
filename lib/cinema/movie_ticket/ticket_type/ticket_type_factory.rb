@@ -6,6 +6,7 @@ require_relative "./senior.rb"
 require_relative "./cinema_citizen_senior.rb"       
 require_relative "./elementary_school_student.rb" 
 require_relative "./handicapped_high_school.rb"   
+require_relative "./handicapped_cinema_citizen.rb"   
 require_relative "./ordinary.rb"
 
 module Cinema
@@ -32,6 +33,8 @@ module Cinema
             Handicapped.new(cinema_time)
           when "障がい者（高校以下）"
             HandicappedHighSchool.new(cinema_time)
+          when "障がい者（シネマシティズン）"
+            HandicappedCinemaCitizen.new(cinema_time)
           else 
             puts "定義されていないユーザーが入力されました。 => #{user_infomation}"
           end

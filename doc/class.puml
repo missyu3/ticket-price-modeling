@@ -26,8 +26,8 @@ class cinema{
     }
   }
 
-  package PriceGrade {
-    class PriceGradeFactory{
+  package TicketType {
+    class TicketTypeFactory{
       create(Customer): PriceGradeClass
     }
     class CinemaCitizen {
@@ -77,30 +77,17 @@ class cinema{
     }
   }
 
-  package Customer {
-  class Customer {
-    - user: User
-    + get_ticket_type
-  }
-
-  class User {
-    + have_id_cord: boolean 
-    + have_student_id_cord: boolean
-    + have_student_notebook: boolean
-    + have_disability_notebook: boolean
-  }
-  }
-
-
-  package CinemaTime{
-    class CinemaDateTime {
-      + get_cinema_time_zone(): CinemaTimeZone
+  package DateTime{
+    class CinemaTime {
+      + time_division: TimeZone
     }
 
-    enum CinemaTimeZone {
-      daytime
-      nighttime
-      firstday
+    enum TimeZone {
+      WEEKDAY_DAYTIME
+      WEEKDAY_NIGHTTIME
+      HOLIDAY_DAYTIME
+      HOLIDAY_NIGHTTIME
+      CINEMA_DAY
     }
   }
 }
